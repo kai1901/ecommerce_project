@@ -3,6 +3,16 @@ import { Header } from '../components/Header';
 import { products } from '../../starting-code/data/products';
 
 export function HomePage() {
+    fetch('http://localhost:3000/api/products')
+        // fetch() sẽ cần một khoảng thời gian để tải hết dữ liệu từ backend
+        // trong khi đó đoạn code sẽ chạy hết các dòng code trong return
+        // sau khi đã load xong data sẽ chạy đoạn code trong then()
+        .then((response) => {
+            response.json().then((data) => {
+                console.log(data); 
+            });
+        })
+
     return (
         <>
             <link rel="icon" type="image/svg+xml" href="/home-favicon.png" />
