@@ -8,7 +8,7 @@ export function HomePage() {
     const [ cart, setCart ] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/products')
+        axios.get('/api/products')
             // fetch() sẽ cần một khoảng thời gian để tải hết dữ liệu từ backend
             // trong khi đó đoạn code sẽ chạy hết các dòng code trong return
             // sau khi đã load xong data sẽ chạy đoạn code trong then()
@@ -16,7 +16,7 @@ export function HomePage() {
                 setProducts(response.data);
             });
 
-        axios.get('http://localhost:3000/api/cart-items')
+        axios.get('/api/cart-items')
             .then((response) => {
                 setCart(response.data)
             })
