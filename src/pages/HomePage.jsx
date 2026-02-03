@@ -1,16 +1,20 @@
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import './HomePage.css';
-import { Header } from '../components/Header';
-import { products } from '../../starting-code/data/products';
+import { Header } from '../components/Header'; 
 
 export function HomePage() {
-    axios.get('http://localhost:3000/api/products')
-        // fetch() sẽ cần một khoảng thời gian để tải hết dữ liệu từ backend
-        // trong khi đó đoạn code sẽ chạy hết các dòng code trong return
-        // sau khi đã load xong data sẽ chạy đoạn code trong then()
-        .then((response) => {
-            console.log(response.data);
-        })
+    const [products, setProducts ] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/products')
+            // fetch() sẽ cần một khoảng thời gian để tải hết dữ liệu từ backend
+            // trong khi đó đoạn code sẽ chạy hết các dòng code trong return
+            // sau khi đã load xong data sẽ chạy đoạn code trong then()
+            .then((response) => {
+                setProducts(response.data);
+            });
+    }, []);
+
 
     return (
         <>
