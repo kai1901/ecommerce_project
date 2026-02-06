@@ -1,8 +1,8 @@
 import './App.css'
-import { HomePage } from './pages/HomePage'
+import { HomePage } from './pages/home/HomePage'
 import { CheckoutPage } from './pages/checkout/CheckoutPage'
 import { Routes, Route } from 'react-router'
-import { OrdersPage } from './pages/OrdersPage'
+import { OrdersPage } from './pages/orders/OrdersPage'
 import { Tracking } from './pages/Tracking'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -21,7 +21,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage cart={cart}/>} />
-      <Route path="checkout" element={<CheckoutPage cart={cart} />} /> 
+      <Route path="checkout" element={<CheckoutPage cart={cart}/>} /> 
       <Route path="orders" element={<OrdersPage cart={cart} />} /> 
       <Route path="tracking" element={<Tracking />} /> 
     </Routes>
