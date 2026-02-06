@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './HomePage.css';
@@ -8,14 +9,11 @@ export function HomePage({ cart }) {
     const [ products, setProducts ] = useState([])
 
     useEffect(() => {
-        axios.get('/api/products')
-            // fetch() sẽ cần một khoảng thời gian để tải hết dữ liệu từ backend
-            // trong khi đó đoạn code sẽ chạy hết các dòng code trong return
-            // sau khi đã load xong data sẽ chạy đoạn code trong then()
-            .then((response) => {
-                setProducts(response.data);
-            });
-
+        const getHomeData = async () => {
+            const response = await axios.get('/api/products')
+            setProducts(response.data);
+        };
+        getHomeData();
     }, []);
 
 
